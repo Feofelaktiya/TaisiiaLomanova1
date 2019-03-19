@@ -1,9 +1,9 @@
-package hw1;
+package hw2.ex3;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,16 +14,45 @@ import static java.lang.System.setProperty;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class CheckMainPageElements {
+public class CheckMainPageElementsWithAnnotations {
+
+    private WebDriver driver;
+
+    @BeforeSuite
+    public void beforeSuite() {
+        setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
+    }
+
+    @BeforeClass
+    public void beforeClass() {
+        driver = new ChromeDriver();
+    }
+
+    @BeforeMethod
+    public void beforeMethod() {
+        driver.manage().window().maximize();
+    }
+
+    @AfterMethod
+    public void afterMethod() {
+        System.out.println(driver.getTitle());
+    }
+
+
+    @AfterClass
+    public void afterClass() {
+        driver.close();
+    }
+
+    @AfterSuite
+    public void afterSuite() {
+        System.out.println(System.currentTimeMillis());
+    }
 
     @Test
 
     public void checkMainPageElements() {
 
-        setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
-
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
 
         // 1 Open test site by URL
         driver.navigate().to("https://epam.github.io/JDI/");
@@ -140,8 +169,5 @@ public class CheckMainPageElements {
         // 16 Assert that there is Footer
         WebElement footer = driver.findElement(By.cssSelector("footer"));
         assertTrue(footer.isDisplayed());
-
-        // 17 Close browser
-        driver.close();
     }
 }
