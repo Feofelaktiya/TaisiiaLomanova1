@@ -2,6 +2,7 @@ package enums;
 
 public class Configuration {
 
+    // ==========USERS===========
     public enum userOne {
         USER_ONE("PITER CHAILOVSKII", "epam", "1234");
 

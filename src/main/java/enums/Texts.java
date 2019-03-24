@@ -2,6 +2,17 @@ package enums;
 
 public class Texts {
 
+    public enum pageTitles {
+        PAGE_TITLES("Home Page", "Different Elements");
+        public String homePage;
+        public String differentElements;
+
+        pageTitles(String titleOne, String titleTwo) {
+            this.homePage = titleOne;
+            this.differentElements = titleTwo;
+        }
+    }
+
     public enum sectionTitles {
         SECTION_TITLES("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS");
         public String home;
@@ -14,38 +25,6 @@ public class Texts {
             this.contactForm = secondTab;
             this.service = thirdTab;
             this.metalsAndColors = forthTab;
-        }
-    }
-
-    public enum benefitTexts {
-        BENEFIT_TEXTS("To include good practices\nand ideas from successful\nEPAM project",
-                "To be flexible and\ncustomizable",
-                "To be multiplatform",
-                "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more" + "…");
-        public String benefitOne;
-        public String benefitTwo;
-        public String benefitThree;
-        public String benefitFour;
-
-        benefitTexts(String one, String two, String three, String four) {
-            this.benefitOne = one;
-            this.benefitTwo = two;
-            this.benefitThree = three;
-            this.benefitFour = four;
-        }
-    }
-
-    public enum aboveTexts {
-        ABOVE_TEXTS("EPAM FRAMEWORK WISHES…", "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT " +
-                "UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI " +
-                "UT ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE" +
-                " EU FUGIAT NULLA PARIATUR.");
-        public String epam;
-        public String lorem;
-
-        aboveTexts(String one, String two) {
-            this.epam = one;
-            this.lorem = two;
         }
     }
 
@@ -92,19 +71,6 @@ public class Texts {
             this.tableWithWages = six;
             this.differentElements = seven;
             this.performance = eight;
-        }
-    }
-
-    public enum webElementTypes {
-        WEB_ELEMENT_TYPES("checkbox", "radiobutton", "dropdown");
-        public String chbx;
-        public String radio;
-        public String ddown;
-
-        webElementTypes(String one, String two, String three) {
-            this.chbx = one;
-            this.radio = two;
-            this.ddown = three;
         }
     }
 

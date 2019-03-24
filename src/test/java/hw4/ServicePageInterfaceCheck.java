@@ -10,6 +10,7 @@ import static com.codeborne.selenide.Selenide.page;
 import static enums.Configuration.userOne.USER_ONE;
 import static enums.Texts.checkboxTexts.CHECKBOX_TEXTS;
 import static enums.Texts.dropdownColors.DROPDOWN_COLORS;
+import static enums.Texts.pageTitles.PAGE_TITLES;
 import static enums.Texts.radiobuttonTexts.RADIOBUTTON_TEXTS;
 import static enums.Texts.serviceOptions.SERVICE_OPTIONS;
 
@@ -32,7 +33,7 @@ public class ServicePageInterfaceCheck extends SelenideTestBase {
         selenideHomePage.openBrowser();
 
 //        2 Assert Browser title
-        selenideHomePage.assertTitle();
+        selenideHomePage.assertTitle(PAGE_TITLES.homePage);
 
 //        3 Perform login
         selenideHomePage.login(USER_ONE.login, USER_ONE.password);

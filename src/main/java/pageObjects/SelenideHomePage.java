@@ -12,6 +12,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static enums.Configuration.userOne.USER_ONE;
 import static enums.Texts.leftSectionServiceOptions.LEFT_SECTION_SERVICE_OPTIONS;
+import static enums.Texts.pageTitles.PAGE_TITLES;
 import static enums.Texts.sectionTitles.SECTION_TITLES;
 import static enums.Texts.serviceOptions.SERVICE_OPTIONS;
 
@@ -87,8 +88,8 @@ public class SelenideHomePage {
         open("https://epam.github.io/JDI/");
     }
 
-    public void assertTitle() {
-        $(byTitle("Home Page")).isDisplayed();
+    public void assertTitle(String title) {
+        $(byTitle(title)).isDisplayed();
     }
 
     public void login(String name, String pass) {
@@ -123,6 +124,6 @@ public class SelenideHomePage {
     public void openPageFromHeaderMenu(String pageName) {
         dropdownName.shouldHave(text(SECTION_TITLES.service)).click();
         dropdownOptions.findBy(text(pageName)).click();
-        $(byTitle("Different Elements")).isDisplayed();
+        $(byTitle(PAGE_TITLES.differentElements)).isDisplayed();
     }
 }
