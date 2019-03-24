@@ -4,30 +4,23 @@ import base.SelenideTestBase;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pageObjects.SelenideDatesPage;
-import pageObjects.SelenideDifferentElementsPage;
 import pageObjects.SelenideHomePage;
 
-import static com.codeborne.selenide.Selenide.clearBrowserCookies;
 import static com.codeborne.selenide.Selenide.page;
 import static enums.Configuration.userOne.USER_ONE;
-import static enums.Texts.checkboxTexts.CHECKBOX_TEXTS;
-import static enums.Texts.dropdownColors.DROPDOWN_COLORS;
 import static enums.Texts.pageTitles.PAGE_TITLES;
-import static enums.Texts.radiobuttonTexts.RADIOBUTTON_TEXTS;
 import static enums.Texts.rangeLogs.RANGE_LOGS;
 import static enums.Texts.serviceOptions.SERVICE_OPTIONS;
 
 public class DataPageSlidersCheck extends SelenideTestBase {
 
     private SelenideHomePage selenideHomePage;
-    private SelenideDifferentElementsPage selenideDifferentElementsPage;
     private SelenideDatesPage selenideDatesPage;
 
 
     @BeforeClass
     public void beforeClass() {
         selenideHomePage = page(SelenideHomePage.class);
-        selenideDifferentElementsPage = page(SelenideDifferentElementsPage.class);
         selenideDatesPage = page(SelenideDatesPage.class);
     }
 
@@ -80,6 +73,5 @@ public class DataPageSlidersCheck extends SelenideTestBase {
 //        13 Assert that for "From" and "To" sliders there are logs rows with corresponding values
         selenideDatesPage.checkLogsForRange(2, RANGE_LOGS.from, 30);
         selenideDatesPage.checkLogsForRange(1, RANGE_LOGS.to, 70);
-
     }
 }

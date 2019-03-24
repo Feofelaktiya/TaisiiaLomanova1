@@ -87,12 +87,5 @@ public class ServicePageInterfaceCheck extends SelenideTestBase {
 //        18 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox. 
         selenideDifferentElementsPage.checkLogForCheckboxex(1, CHECKBOX_TEXTS.wind, false);
         selenideDifferentElementsPage.checkLogForCheckboxex(2, CHECKBOX_TEXTS.water, false);
-
-
-
-
-
-
-
     }
 }
