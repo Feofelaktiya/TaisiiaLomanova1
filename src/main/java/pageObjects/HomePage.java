@@ -1,5 +1,6 @@
 package pageObjects;
 
+import io.qameta.allure.Step;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -84,7 +85,7 @@ public class HomePage {
         password.sendKeys(passwd);
         loginButton.click();
     }
-
+    @Step
     public void assertItemsAndTexts() {
         List<String> expectedNames = new ArrayList<String>();
         expectedNames.add("HOME");
@@ -100,6 +101,7 @@ public class HomePage {
         assertEquals(names, expectedNames);
     }
 
+    @Step
     public void assertImages() {
         List<WebElement> icons = images;
         for (WebElement icon : icons) {
@@ -107,6 +109,7 @@ public class HomePage {
         }
     }
 
+    @Step
     public void assertTexts() {
         List<String> expectedTexts = new ArrayList<String>();
         expectedTexts.add("To include good practices\nand ideas from successful\nEPAM project");
@@ -124,6 +127,7 @@ public class HomePage {
         assertEquals(texts, expectedTexts);
     }
 
+    @Step
     public void assertMainHeaderTexts() {
 
         List<String> expectedHeaderTexts = new ArrayList<String>();
@@ -143,6 +147,7 @@ public class HomePage {
         assertEquals(headerTexts, expectedHeaderTexts);
     }
 
+    @Step
     public void goToIframe(WebDriver driver) {
         driver.switchTo().frame("iframe");
         search.click();
@@ -150,34 +155,41 @@ public class HomePage {
 
     }
 
+    @Step
     public void goBackToDefaultFrame(WebDriver driver) {
         driver.switchTo().defaultContent();
         search.click();
         searchInput.sendKeys("I am back on the default frame");
     }
 
+    @Step
     public void checkEpamLogoOnIFrame() {
         WebElement iframeLogo = epamLogo;
         assertTrue(iframeLogo.isDisplayed());
     }
 
+    @Step
     public void assertSubHeaderText() {
         assertEquals(subHeader.getText(), "JDI GITHUB");
 
     }
 
+    @Step
     public void assertJDILinkURL() {
         assertEquals(subHeader.getAttribute("href"), "https://github.com/epam/JDI");
     }
 
+    @Step
     public void assertLeftSectoinIsDisplayed() {
         assertTrue(leftSection.isDisplayed());
     }
 
+    @Step
     public void assertFooterIsDisplayed() {
         assertTrue(footer.isDisplayed());
     }
 
+    @Step
     public void takeScreenshot(WebDriver driver, String fileName) {
         TakesScreenshot screenshot = (TakesScreenshot) driver;
         File screensFile = screenshot.getScreenshotAs(OutputType.FILE);
