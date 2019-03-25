@@ -1,17 +1,17 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Test Suite" verbose="1" >
-    <test name="SimpleTest" >
+<test name="SimpleTest" >
 
-        <groups>
-            <run>
-                <include name="Group1"/>
-            </run>
-        </groups>
+    <groups>
+        <run>
+            <include name="Group1"/>
+        </run>
+    </groups>
 
-        <classes>
-            <class name="lesson2.SimpleTest" />
-        </classes>
+    <classes>
+        <class name="lesson2.SimpleTest" />
+    </classes>
 
-    </test>
+</test>
 </suite>
