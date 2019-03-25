@@ -85,11 +85,11 @@ public class SelenideHomePage {
     @FindBy(css = "p > span")
     private SelenideElement leftSectionSupport;
 
-    @Step
+    @Step("Open test site by URL")
     public void openBrowser() {
         open("https://epam.github.io/JDI/");
     }
-    @Step("Open test site by URL")
+    @Step("Assert Browser title")
     public void assertTitle(String title) {
         $(byTitle(title)).isDisplayed();
     }
@@ -102,7 +102,7 @@ public class SelenideHomePage {
         loginButton.click();
     }
 
-    @Step("Assert Browser title")
+    @Step
     public void assertUserName() {
         userName.shouldBe(Condition.visible);
         userName.shouldBe(text(USER_ONE.name));
