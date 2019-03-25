@@ -89,12 +89,12 @@ public class SelenideHomePage {
     public void openBrowser() {
         open("https://epam.github.io/JDI/");
     }
-    @Step("1 Open test site by URL")
+    @Step("Open test site by URL")
     public void assertTitle(String title) {
         $(byTitle(title)).isDisplayed();
     }
 
-    @Step("3 Perform login")
+    @Step("Perform login")
     public void login(String name, String pass) {
         profileButton.click();
         login.sendKeys(name);
@@ -102,7 +102,7 @@ public class SelenideHomePage {
         loginButton.click();
     }
 
-    @Step("2 Assert Browser title")
+    @Step("Assert Browser title")
     public void assertUserName() {
         userName.shouldBe(Condition.visible);
         userName.shouldBe(text(USER_ONE.name));
