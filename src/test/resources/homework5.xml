@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Test Suite" verbose="1" parallel="methods" thread-count="3">
+    <test name="Homework5" >
+
+        <packages>
+            <package name="hw5"/>
+        </packages>
+
+        <classes>
+            <class name="hw4.ServicePageInterfaceCheck"/>
+        </classes>
+    </test>
+</suite>

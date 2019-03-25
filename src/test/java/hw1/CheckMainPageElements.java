@@ -69,7 +69,7 @@ public class CheckMainPageElements {
         expectedTexts.add("To include good practices\nand ideas from successful\nEPAM project");
         expectedTexts.add("To be flexible and\ncustomizable");
         expectedTexts.add("To be multiplatform");
-        expectedTexts.add("Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…");
+        expectedTexts.add("Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more" + "…");
         List<WebElement> textElements = driver.findElements(By.cssSelector(".benefit-txt"));
         int size = textElements.size();
         assertEquals(size, 4);
