@@ -11,8 +11,8 @@
     <properties>
         <allure.version>2.6.0</allure.version>
         <aspectj.version>1.8.12</aspectj.version>
-        <!--<suiteXmlFile>homework5.xml</suiteXmlFile>-->
-        <suiteXmlFile>cucumberConfig.xml</suiteXmlFile>
+        <suiteXmlFile>homework5.xml</suiteXmlFile>
+        <!--<suiteXmlFile>cucumberConfig.xml</suiteXmlFile>-->
     </properties>
 
     <dependencies>
