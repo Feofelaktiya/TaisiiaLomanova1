@@ -43,8 +43,8 @@ public class DataPageSlidersCheckAllureReport extends SelenideTestBase {
 
 //        2 Assert Browser title
         selenideHomePage.assertTitle(PAGE_TITLES.homePage);
-//        3Perform login
 
+//        3 Perform login
         selenideHomePage.login(USER_ONE.login, USER_ONE.password);
 
 //        4 Assert User name in the left-top side of screen that user is loggined
