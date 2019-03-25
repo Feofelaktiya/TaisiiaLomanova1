@@ -3,14 +3,8 @@
 <suite name="Test Suite" verbose="1" >
 <test name="SimpleTest" >
 
-    <groups>
-        <run>
-            <include name="Group1"/>
-        </run>
-    </groups>
-
     <classes>
-        <class name="lesson2.SimpleTest" />
+        <class name="hw5.DataPageSlidersCheckAllureReport" />
     </classes>
 
 </test>

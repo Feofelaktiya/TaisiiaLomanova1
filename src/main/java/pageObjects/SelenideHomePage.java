@@ -4,6 +4,7 @@ import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Condition.text;
@@ -84,14 +85,16 @@ public class SelenideHomePage {
     @FindBy(css = "p > span")
     private SelenideElement leftSectionSupport;
 
+    @Step
     public void openBrowser() {
         open("https://epam.github.io/JDI/");
     }
-
+    @Step
     public void assertTitle(String title) {
         $(byTitle(title)).isDisplayed();
     }
 
+    @Step
     public void login(String name, String pass) {
         profileButton.click();
         login.sendKeys(name);
@@ -99,11 +102,13 @@ public class SelenideHomePage {
         loginButton.click();
     }
 
+    @Step
     public void assertUserName() {
         userName.shouldBe(Condition.visible);
         userName.shouldBe(text(USER_ONE.name));
     }
 
+    @Step
     public void checkHeaderDropdown() {
         dropdownName.shouldHave(text(SECTION_TITLES.service)).click();
         dropdownOptions.shouldHaveSize(8);
@@ -112,6 +117,7 @@ public class SelenideHomePage {
                 SERVICE_OPTIONS.tableWithWages, SERVICE_OPTIONS.differentElements, SERVICE_OPTIONS.performance));
     }
 
+    @Step
     public void checkLeftSectionOptions() {
         leftSectionSupport.isDisplayed();
         leftSectionServiceOption.click();
@@ -121,6 +127,7 @@ public class SelenideHomePage {
                 LEFT_SECTION_SERVICE_OPTIONS.tableWithWages, LEFT_SECTION_SERVICE_OPTIONS.differentElements, LEFT_SECTION_SERVICE_OPTIONS.performance));
     }
 
+    @Step
     public void openPageFromHeaderMenu(String pageName) {
         dropdownName.shouldHave(text(SECTION_TITLES.service)).click();
         dropdownOptions.findBy(text(pageName)).click();

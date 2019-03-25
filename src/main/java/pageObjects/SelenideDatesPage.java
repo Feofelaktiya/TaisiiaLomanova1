@@ -2,6 +2,7 @@ package pageObjects;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -29,6 +30,7 @@ public class SelenideDatesPage {
     @FindBy(css = ".ui-slider")
     private SelenideElement slider;
 
+    @Step
     public void moveLeftPoint(int expectedPositionLeft) {
         SelenideElement leftPoint = handles.get(0);
         int size = slider.getSize().width;
@@ -40,6 +42,7 @@ public class SelenideDatesPage {
         }
     }
 
+    @Step
     public void moveRightPoint(int expectedPositionRight) {
         SelenideElement rightPoint = handles.get(1);
         int size = slider.getSize().width;
@@ -51,6 +54,7 @@ public class SelenideDatesPage {
         }
     }
 
+    @Step
     public void checkLogsForRange(int logNumber, String type, int expectedPosition) {
         logs.get(logNumber - 1).shouldHave(text("Range 2(" + type + "):" + expectedPosition + " link clicked"));
     }

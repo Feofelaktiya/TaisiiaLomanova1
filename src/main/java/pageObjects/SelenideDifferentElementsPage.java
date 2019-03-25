@@ -4,6 +4,7 @@ package pageObjects;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -50,35 +51,45 @@ public class SelenideDifferentElementsPage {
         button.isDisplayed();
     }
 
+    @Step
     public void checkRightSection() {
         rightSection.isDisplayed();
     }
 
+    @Step
     public void checkLeftSection() {
         navigationSidebar.isDisplayed();
     }
 
+    @Step
     public void selectCheckbox(String checkbox) {
         labelCheckboxes.findBy(text(checkbox)).click();
     }
 
+    @Step
     public void checkLogForCheckboxex(int logNumber, String type, boolean checkedStatus) {
         logs.get(logNumber - 1).shouldHave(text(type + ": condition changed to " + checkedStatus));
     }
 
 
+    @Step
     public void selectRadiobutton(String radiobutton) {
         labelRadiobuttons.findBy(text(radiobutton)).click();
 
     }
+
+    @Step
     public void checkLogForRadiobuttons(int logNumber, String type) {
         logs.get(logNumber - 1).shouldHave(text("metal: value changed to " + type));
     }
+
+    @Step
     public void selectDropdownOption(String color) {
         selectedColorField.click();
         colorDropdown.findBy(text(color)).click();
     }
 
+    @Step
     public void checkLogForDropdown(int logNumber, String color) {
         logs.get(logNumber - 1).shouldHave(text("Colors: value changed to " + color));
     }
