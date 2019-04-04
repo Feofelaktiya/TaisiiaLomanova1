@@ -35,6 +35,8 @@ public class ServicePageInterfaceCheck extends SelenideTestBase {
 
     @Test
     public void servicePageInterfaceCheck() {
+        // TODO Basically, PO methods should be parametrised by enum instead of String,
+        // it helps us to avoid ambiguity of data, that can be passed into the method.
 
 //        1 Open test site by URL
         selenideHomePage.openBrowser();
@@ -43,9 +45,11 @@ public class ServicePageInterfaceCheck extends SelenideTestBase {
         selenideHomePage.assertTitle(PAGE_TITLES.homePage);
 
 //        3 Perform login
+        // TODO This should be parameterized by User entity/enum rather than two strings.
         selenideHomePage.login(USER_ONE.login, USER_ONE.password);
 
 //        4 Assert User name in the left-top side of screen that user is loggined
+        // TODO This is quite important to parametrised this method by exactly the same entity that SelenideHomePage::login
         selenideHomePage.assertUserName();
 
 //        5 Click on "Service" subcategory in the header and check that drop down contains options

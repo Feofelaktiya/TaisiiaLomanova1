@@ -61,6 +61,7 @@ public class SelenideDifferentElementsPage {
         navigationSidebar.isDisplayed();
     }
 
+    // TODO This might be better with Variable Arguments (Varargs)
     @Step
     public void selectCheckbox(String checkbox) {
         labelCheckboxes.findBy(text(checkbox)).click();
