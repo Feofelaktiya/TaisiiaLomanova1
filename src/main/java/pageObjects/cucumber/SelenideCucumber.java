@@ -6,6 +6,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import enums.PageTitles;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 
@@ -14,12 +15,11 @@ import java.util.List;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byTitle;
 import static com.codeborne.selenide.Selenide.*;
-import static enums.Configuration.userOne.USER_ONE;
-import static enums.Texts.leftSectionServiceOptions.LEFT_SECTION_SERVICE_OPTIONS;
-import static enums.Texts.pageTitles.PAGE_TITLES;
-import static enums.Texts.rangeLogs.RANGE_LOGS;
-import static enums.Texts.sectionTitles.SECTION_TITLES;
-import static enums.Texts.serviceOptions.SERVICE_OPTIONS;
+import static enums.Configuration.NAME;
+import static enums.LeftSectionServiceOptions.DATES;
+import static enums.RangeLogs.FROM;
+import static enums.RangeLogs.TO;
+import static enums.SectionTitles.SERVICE;
 
 public class SelenideCucumber {
 
@@ -91,15 +91,15 @@ public class SelenideCucumber {
     @Then("The user name is displayed")
     public void checkUserName() {
         userName.isDisplayed();
-        userName.shouldHave(text(USER_ONE.name));
+        userName.shouldHave(text(NAME.text));
     }
 
     @Step("Open Data Page")
     @When("I open the Data Page")
     public void openPageFromHeaderMenu() {
-        dropdownName.shouldHave(text(SECTION_TITLES.service)).click();
-        dropdownOptions.findBy(text(LEFT_SECTION_SERVICE_OPTIONS.dates)).click();
-        $(byTitle(PAGE_TITLES.differentElements)).isDisplayed();
+        dropdownName.shouldHave(text(SERVICE.title)).click();
+        dropdownOptions.findBy(text(DATES.option)).click();
+        $(byTitle(PageTitles.DATES.title)).isDisplayed();
     }
 
     @Step ("Check browser title is Data Page")
@@ -136,11 +136,11 @@ public class SelenideCucumber {
     @Step ("Check logs have appropriate message rows")
     @Then("I check log for left point: (\\d+) log with (\\d+) value")
     public void checkLogsForLeftPoint(int logNumber, int expectedPosition) {
-        logs.get(logNumber - 1).shouldHave(text("Range 2(" + RANGE_LOGS.from + "):" + expectedPosition + " link clicked"));
+        logs.get(logNumber - 1).shouldHave(text("Range 2(" + FROM.log + "):" + expectedPosition + " link clicked"));
     }
 
     @And ("I check log for right point: (\\d+) log with (\\d+) value")
     public void checkLogsForRightPoint(int logNumber, int expectedPosition) {
-        logs.get(logNumber - 1).shouldHave(text("Range 2(" + RANGE_LOGS.to + "):" + expectedPosition + " link clicked"));
+        logs.get(logNumber - 1).shouldHave(text("Range 2(" + TO.log + "):" + expectedPosition + " link clicked"));
     }
 }

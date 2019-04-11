@@ -18,15 +18,13 @@ import java.util.Map;
 
 import static com.codeborne.selenide.Condition.id;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byTitle;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
-import static enums.Configuration.userOne.USER_ONE;
-import static enums.Texts.leftSectionServiceOptions.LEFT_SECTION_SERVICE_OPTIONS;
-import static enums.Texts.pageTitles.PAGE_TITLES;
-import static enums.Texts.sectionTitles.SECTION_TITLES;
-import static enums.Texts.serviceOptions.SERVICE_OPTIONS;
-import static enums.Texts.usersInTable.USERS_IN_TABLE;
+import static enums.Configuration.NAME;
+import static enums.LeftSectionServiceOptions.USER_TABLE;
+import static enums.SectionTitles.SERVICE;
+import static enums.UsersInTable.ROMAN;
+import static enums.UsersInTable.SERGEY_IVAN;
 
 public class SelenideUserTableCucumber {
 
@@ -95,19 +93,19 @@ public class SelenideUserTableCucumber {
         passwordInput.sendKeys(password);
         submitButton.click();
         userName.isDisplayed();
-        userName.shouldHave(text(USER_ONE.name));
+        userName.shouldHave(text(NAME.text));
     }
 
     @Step("Open User Table page")
     @And("I open User Table Page through the header menu Service -> User Table")
     public void openUserTablePage() {
-        dropdownName.shouldHave(text(SECTION_TITLES.service)).click();
-        dropdownOptions.findBy(text(LEFT_SECTION_SERVICE_OPTIONS.userTable)).click();
+        dropdownName.shouldHave(text(SERVICE.title)).click();
+        dropdownOptions.findBy(text(USER_TABLE.option)).click();
     }
 
     @And("I am on Users Table Page")
     public void checkPageTitleIsUserTable() {
-        $(byTitle(SERVICE_OPTIONS.userTable.toLowerCase())).isDisplayed();
+//        $(byTitle(ServiceOptions.USER_TABLE.toLowerCase())).isDisplayed();
     }
 
     @Step("Check number and user columns have valid values")
@@ -157,7 +155,7 @@ public class SelenideUserTableCucumber {
     @Step("Set Vip status to a user")
     @When("I set 'vip' status to (.+)")
     public void setStatus(String name) {
-        if (name.equals(USERS_IN_TABLE.ivan)) {
+        if (name.equals(SERGEY_IVAN.user)) {
             vipCheckboxes.findBy(id("ivan")).click();
         }
     }
@@ -171,7 +169,7 @@ public class SelenideUserTableCucumber {
     @Step("Check dropdown options have valid values")
     @When("I click on dropdown in column Type for user (.+)")
     public void getDropdownValues(String user) {
-        if (user.equals(USERS_IN_TABLE.roman)) {
+        if (user.equals(ROMAN.user)) {
             $(By.xpath("//a[contains(text(), 'Roman')]/ancestor::tr//select")).click();
             for (WebElement option : options
                     ) {

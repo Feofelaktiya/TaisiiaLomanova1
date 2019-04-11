@@ -11,12 +11,13 @@ import pageObjects.SelenideDifferentElementsPage;
 import pageObjects.SelenideHomePage;
 
 import static com.codeborne.selenide.Selenide.page;
-import static enums.Configuration.userOne.USER_ONE;
-import static enums.Texts.checkboxTexts.CHECKBOX_TEXTS;
-import static enums.Texts.dropdownColors.DROPDOWN_COLORS;
-import static enums.Texts.pageTitles.PAGE_TITLES;
-import static enums.Texts.radiobuttonTexts.RADIOBUTTON_TEXTS;
-import static enums.Texts.serviceOptions.SERVICE_OPTIONS;
+import static enums.CheckboxTexts.WATER;
+import static enums.CheckboxTexts.WIND;
+import static enums.Configuration.*;
+import static enums.DropdownColors.YELLOW;
+import static enums.PageTitles.HOME_PAGE;
+import static enums.RadiobuttonTexts.SELEN;
+import static enums.ServiceOptions.DIFFERENT_ELEMENTS;
 
 @Feature("Smoke tests")
 @Story("Different Elements Page Testing")
@@ -40,13 +41,13 @@ public class ServicePageInterfaceCheckAllureReport extends SelenideTestBase {
         selenideHomePage.openBrowser();
 
 //        2 Assert Browser title
-        selenideHomePage.assertTitle(PAGE_TITLES.homePage);
+        selenideHomePage.assertTitle(HOME_PAGE.title);
 
 //        3 Perform login
-        selenideHomePage.login(USER_ONE.login, USER_ONE.password);
+        selenideHomePage.login(LOGIN.text, PASSWORD.text);
 
 //        4 Assert User name in the left-top side of screen that user is loggined
-        selenideHomePage.assertUserName();
+        selenideHomePage.assertUserName(NAME.text);
 
 //        5 Click on "Service" subcategory in the header and check that drop down contains options
         selenideHomePage.checkHeaderDropdown();
@@ -55,7 +56,7 @@ public class ServicePageInterfaceCheckAllureReport extends SelenideTestBase {
         selenideHomePage.checkLeftSectionOptions();
 
 //        7 Open through the header menu Service -> Different Elements Page
-        selenideHomePage.openPageFromHeaderMenu(SERVICE_OPTIONS.differentElements);
+        selenideHomePage.openPageFromHeaderMenu(DIFFERENT_ELEMENTS.option);
 
 //        8 Check interface on Different elements page, it contains all needed elements
         selenideDifferentElementsPage.checkPageContainsElements();
@@ -67,32 +68,32 @@ public class ServicePageInterfaceCheckAllureReport extends SelenideTestBase {
         selenideDifferentElementsPage.checkLeftSection();
 
 //        11 Select checkboxes
-        selenideDifferentElementsPage.selectCheckbox(CHECKBOX_TEXTS.water);
-        selenideDifferentElementsPage.selectCheckbox(CHECKBOX_TEXTS.wind);
+        selenideDifferentElementsPage.selectCheckbox(WATER.text);
+        selenideDifferentElementsPage.selectCheckbox(WIND.text);
 
 
 //        12 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox. 
-        selenideDifferentElementsPage.checkLogForCheckboxex(1, CHECKBOX_TEXTS.wind, true);
-        selenideDifferentElementsPage.checkLogForCheckboxex(2, CHECKBOX_TEXTS.water, true);
+        selenideDifferentElementsPage.checkLogForCheckboxex(1, WIND.text, true);
+        selenideDifferentElementsPage.checkLogForCheckboxex(2, WATER.text, true);
 
 //        13 Select radio
-        selenideDifferentElementsPage.selectRadiobutton(RADIOBUTTON_TEXTS.selen);
+        selenideDifferentElementsPage.selectRadiobutton(SELEN.text);
 
 //        14 Assert that for radiobutton there is a log row and value is corresponded to the status of radiobutton. 
-        selenideDifferentElementsPage.checkLogForRadiobuttons(1, RADIOBUTTON_TEXTS.selen);
+        selenideDifferentElementsPage.checkLogForRadiobuttons(1, SELEN.text);
 
 //        15 Select in dropdown
-        selenideDifferentElementsPage.selectDropdownOption(DROPDOWN_COLORS.yellow);
+        selenideDifferentElementsPage.selectDropdownOption(YELLOW.color);
 
 //        16 Assert that for dropdown there is a log row and value is corresponded to the selected value. 
-        selenideDifferentElementsPage.checkLogForDropdown(1, DROPDOWN_COLORS.yellow);
+        selenideDifferentElementsPage.checkLogForDropdown(1, YELLOW.color);
 
 //        17 Unselect and assert checkboxes
-        selenideDifferentElementsPage.selectCheckbox(CHECKBOX_TEXTS.water);
-        selenideDifferentElementsPage.selectCheckbox(CHECKBOX_TEXTS.wind);
+        selenideDifferentElementsPage.selectCheckbox(WATER.text);
+        selenideDifferentElementsPage.selectCheckbox(WIND.text);
 
 //        18 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox. 
-        selenideDifferentElementsPage.checkLogForCheckboxex(1, CHECKBOX_TEXTS.wind, false);
-        selenideDifferentElementsPage.checkLogForCheckboxex(2, CHECKBOX_TEXTS.water, false);
+        selenideDifferentElementsPage.checkLogForCheckboxex(1, WIND.text, false);
+        selenideDifferentElementsPage.checkLogForCheckboxex(2, WATER.text, false);
     }
 }

@@ -4,6 +4,8 @@ import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import enums.LeftSectionServiceOptions;
+import enums.PageTitles;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 
@@ -11,11 +13,8 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byTitle;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static enums.Configuration.userOne.USER_ONE;
-import static enums.Texts.leftSectionServiceOptions.LEFT_SECTION_SERVICE_OPTIONS;
-import static enums.Texts.pageTitles.PAGE_TITLES;
-import static enums.Texts.sectionTitles.SECTION_TITLES;
-import static enums.Texts.serviceOptions.SERVICE_OPTIONS;
+import static enums.SectionTitles.SERVICE;
+import static enums.ServiceOptions.*;
 
 public class SelenideHomePage {
 
@@ -89,6 +88,7 @@ public class SelenideHomePage {
     public void openBrowser() {
         open("https://epam.github.io/JDI/");
     }
+
     @Step("Assert Browser title")
     public void assertTitle(String title) {
         $(byTitle(title)).isDisplayed();
@@ -103,34 +103,36 @@ public class SelenideHomePage {
     }
 
     @Step
-    public void assertUserName() {
+    public void assertUserName(String name) {
         userName.shouldBe(Condition.visible);
-        userName.shouldBe(text(USER_ONE.name));
+        userName.shouldBe(text(name));
     }
 
     @Step
     public void checkHeaderDropdown() {
-        dropdownName.shouldHave(text(SECTION_TITLES.service)).click();
-        dropdownOptions.shouldHaveSize(8);
-        dropdownOptions.shouldHave(CollectionCondition.texts(SERVICE_OPTIONS.support, SERVICE_OPTIONS.dates,
-                SERVICE_OPTIONS.complexTable, SERVICE_OPTIONS.simpleTable, SERVICE_OPTIONS.userTable,
-                SERVICE_OPTIONS.tableWithWages, SERVICE_OPTIONS.differentElements, SERVICE_OPTIONS.performance));
+        dropdownName.shouldHave(text(SERVICE.title)).click();
+        dropdownOptions.shouldHaveSize(9);
+        dropdownOptions.shouldHave(CollectionCondition.texts(SUPPORT.option, DATES.option, SEARCH.option,
+                COMPLEX_TABLE.option, SIMPLE_TABLE.option, USER_TABLE.option,
+                TABLE_WITH_PAGES.option, DIFFERENT_ELEMENTS.option, PERFORMANCE.option));
     }
 
     @Step
     public void checkLeftSectionOptions() {
         leftSectionSupport.isDisplayed();
         leftSectionServiceOption.click();
-        leftSectionElements.shouldHaveSize(8);
-        leftSectionElements.shouldHave(CollectionCondition.texts(LEFT_SECTION_SERVICE_OPTIONS.support, LEFT_SECTION_SERVICE_OPTIONS.dates,
-                LEFT_SECTION_SERVICE_OPTIONS.complexTable, LEFT_SECTION_SERVICE_OPTIONS.simpleTable, LEFT_SECTION_SERVICE_OPTIONS.userTable,
-                LEFT_SECTION_SERVICE_OPTIONS.tableWithWages, LEFT_SECTION_SERVICE_OPTIONS.differentElements, LEFT_SECTION_SERVICE_OPTIONS.performance));
+        leftSectionElements.shouldHaveSize(9);
+        leftSectionElements.shouldHave(CollectionCondition.texts(LeftSectionServiceOptions.SUPPORT.option,
+                LeftSectionServiceOptions.DATES.option, LeftSectionServiceOptions.COMPLEX_TABLE.option,
+                LeftSectionServiceOptions.SIMPLE_TABLE.option, LeftSectionServiceOptions.SEARCH.option,
+                LeftSectionServiceOptions.USER_TABLE.option, LeftSectionServiceOptions.TABLE_WITH_PAGES.option,
+                LeftSectionServiceOptions.DIIFFERENT_ELEMENTS.option, LeftSectionServiceOptions.PERFORMANCE.option));
     }
 
     @Step
     public void openPageFromHeaderMenu(String pageName) {
-        dropdownName.shouldHave(text(SECTION_TITLES.service)).click();
+        dropdownName.shouldHave(text(SERVICE.title)).click();
         dropdownOptions.findBy(text(pageName)).click();
-        $(byTitle(PAGE_TITLES.differentElements)).isDisplayed();
+        $(byTitle(PageTitles.DIFFERENT_ELEMENTS.title)).isDisplayed();
     }
 }

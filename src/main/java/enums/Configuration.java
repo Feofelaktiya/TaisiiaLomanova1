@@ -1,24 +1,16 @@
 package enums;
 
-// TODO What is the reason of inner class here ?
-public class Configuration {
+// Refactored
+public enum Configuration {
+    NAME("PITER CHAILOVSKII"),
+    LOGIN("epam"),
+    PASSWORD("1234");
 
-    // ==========USERS===========
-    public enum userOne {
-        USER_ONE("PITER CHAILOVSKII", "epam", "1234");
-
-        public String name;
-        public String login;
-        public String password;
+    public String text;
 
 
-        userOne(String name, String login, String pass) {
-            this.name = name;
-            this.login = login;
-            this.password = pass;
+    Configuration(String text) {
+        this.text = text;
 
-        }
     }
-
-
 }
