@@ -1,5 +1,13 @@
 package enums;
 
+/*
+TODO It is not make sense to create one single class for this purpose,
+you should create one single enum for each purposes.
+Besides, you should not create only one fiend in enum with different parameters, for the example :
+enum {
+    RED("red"), GREEN("green"), BLUE("blue")
+}
+ */
 public class Texts {
 
     public enum pageTitles {

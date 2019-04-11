@@ -10,6 +10,11 @@ import java.util.List;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.actions;
 
+/* TODO Basically, this PO should has two methods:
+1. setSlider(int, int)
+2. checkSliderLog(int, int)
+This improvement makes test quite readable and shorter, besides it helps you to avoid code duplication.
+*/
 public class SelenideDatesPage {
 
     @FindBy(css = "div[name=navigation-sidebar]")
@@ -54,6 +59,8 @@ public class SelenideDatesPage {
         }
     }
 
+    // TODO In this case, the log rows order doesn't really matter,
+    // anyway pay attention on arguments naming, logNumber represent the position of the log's row...
     @Step
     public void checkLogsForRange(int logNumber, String type, int expectedPosition) {
         logs.get(logNumber - 1).shouldHave(text("Range 2(" + type + "):" + expectedPosition + " link clicked"));

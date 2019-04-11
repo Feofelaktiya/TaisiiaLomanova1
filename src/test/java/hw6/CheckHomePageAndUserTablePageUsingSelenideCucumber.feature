@@ -1,7 +1,10 @@
+# TODO I don't get it. Where is the steps from home task ? You should implement it as is, without modifications.
 Feature: Home Page and User Table Page on Cucumber
 
+  # TODO Same story with parametrisation
   Scenario: Checking Home Page And User Table Page
     Given I am on the Home Page
+    # TODO Why don't you reuse steps from previous scenario ?
     And I am logged in as Piter Chailovskii with login epam and 1234 password
     And I open User Table Page through the header menu Service -> User Table
     And I am on Users Table Page

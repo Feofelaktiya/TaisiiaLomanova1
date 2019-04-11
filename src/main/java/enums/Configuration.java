@@ -1,5 +1,6 @@
 package enums;
 
+// TODO What is the reason of inner class here ?
 public class Configuration {
 
     // ==========USERS===========

@@ -8,7 +8,10 @@ import org.testng.annotations.Test;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static java.lang.System.setProperty;
 import static org.testng.Assert.assertEquals;
@@ -64,21 +67,17 @@ public class CheckMainPageElements {
             assertTrue(icon.isDisplayed());
         }
 
+        // TODO Take a look on this approach and refactor the rest of the test.
         // 8 Assert that there are 4 texts on the Index Page under icons and they have proper text
-        List<String> expectedTexts = new ArrayList<String>();
-        expectedTexts.add("To include good practices\nand ideas from successful\nEPAM project");
-        expectedTexts.add("To be flexible and\ncustomizable");
-        expectedTexts.add("To be multiplatform");
-        expectedTexts.add("Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more" + "…");
         List<WebElement> textElements = driver.findElements(By.cssSelector(".benefit-txt"));
-        int size = textElements.size();
-        assertEquals(size, 4);
-        List<String> texts = new ArrayList<String>();
-        for (WebElement element : textElements) {
-            String text = element.getText();
-            texts.add(text);
-        }
-        assertEquals(texts, expectedTexts);
+        assertEquals(textElements.size(), 4);
+        List<String> texts = textElements.stream().map(WebElement::getText).collect(Collectors.toList());
+        assertEquals(texts, Arrays.asList(
+                "To include good practices\nand ideas from successful\nEPAM project",
+                "To be flexible and\ncustomizable",
+                "To be multiplatform",
+                "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more" + "…"));
+        // !TODO
 
         // 9 Assert a text of the main headers
         List<String> expectedHeaderTexts = new ArrayList<String>();
@@ -101,6 +100,9 @@ public class CheckMainPageElements {
         driver.switchTo().frame("iframe");
         driver.findElement(By.cssSelector(".search")).click();
         driver.findElement(By.cssSelector(".search-field > input")).sendKeys("I am on the iframe");
+        // TODO What is the reason of scr here ?
+        // 1. You should avoid code duplication
+        // 2. It will be better to make a scr in case if test is failed
         TakesScreenshot screenshot = (TakesScreenshot) driver;
         File screensFile = screenshot.getScreenshotAs(OutputType.FILE);
         try {
