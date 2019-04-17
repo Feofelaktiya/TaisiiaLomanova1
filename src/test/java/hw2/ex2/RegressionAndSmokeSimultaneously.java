@@ -14,13 +14,9 @@ import static java.lang.System.setProperty;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-// TODO Code convention !
 public class RegressionAndSmokeSimultaneously {
 
-    // TODO What is the reason of empty line here ?
-    // Pay attention that there is several places with this issue.
-    @Test (groups = {"Regression", "Smoke"})
-
+    @Test(groups = {"Regression", "Smoke"})
     public void checkMainPageElementsOne() {
 
         setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
@@ -148,8 +144,7 @@ public class RegressionAndSmokeSimultaneously {
         driver.close();
     }
 
-    @Test (groups = {"Regression", "Smoke"})
-
+    @Test(groups = {"Regression", "Smoke"})
     public void checkMainPageElementsTwo() {
 
         setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
@@ -277,8 +272,7 @@ public class RegressionAndSmokeSimultaneously {
         driver.close();
     }
 
-    @Test (groups = {"Regression", "Smoke"})
-
+    @Test(groups = {"Regression", "Smoke"})
     public void checkMainPageElementsThree() {
 
         setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");

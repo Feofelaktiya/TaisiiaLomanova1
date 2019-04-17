@@ -16,8 +16,7 @@ import static org.testng.Assert.assertTrue;
 
 public class ThreeHomeWorkOneRegression {
 
-    @Test (groups = "Regression")
-
+    @Test(groups = "Regression")
     public void checkMainPageElementsOne() {
 
         setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
@@ -145,8 +144,7 @@ public class ThreeHomeWorkOneRegression {
         driver.close();
     }
 
-    @Test (groups = "Regression")
-
+    @Test(groups = "Regression")
     public void checkMainPageElementsTwo() {
 
         setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
@@ -274,8 +272,7 @@ public class ThreeHomeWorkOneRegression {
         driver.close();
     }
 
-    @Test (groups = "Regression")
-
+    @Test(groups = "Regression")
     public void checkMainPageElementsThree() {
 
         setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");

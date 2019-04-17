@@ -17,7 +17,6 @@ import static org.testng.Assert.assertTrue;
 public class ThreeHomeWorkOneSmoke {
 
     @Test (groups = "Smoke")
-
     public void checkMainPageElementsOne() {
 
         setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
@@ -146,7 +145,6 @@ public class ThreeHomeWorkOneSmoke {
     }
 
     @Test (groups = "Smoke")
-
     public void checkMainPageElementsTwo() {
 
         setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
@@ -275,7 +273,6 @@ public class ThreeHomeWorkOneSmoke {
     }
 
     @Test (groups = "Smoke")
-
     public void checkMainPageElementsThree() {
 
         setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");

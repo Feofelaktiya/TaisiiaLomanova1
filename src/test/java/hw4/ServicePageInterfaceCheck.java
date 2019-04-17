@@ -27,7 +27,6 @@ public class ServicePageInterfaceCheck extends SelenideTestBase {
     private SelenideHomePage selenideHomePage;
     private SelenideDifferentElementsPage selenideDifferentElementsPage;
 
-
     @BeforeClass
     public void beforeClass() {
         selenideHomePage = page(SelenideHomePage.class);

@@ -54,11 +54,7 @@ public class CheckMainPageElements {
         expectedNames.add("SERVICE");
         expectedNames.add("METALS & COLORS");
         List<WebElement> headerElements = driver.findElements(By.cssSelector("[role = 'navigation'] > ul.m-l8 > li"));
-        List<String> names = new ArrayList<String>();
-        for (WebElement element : headerElements) {
-            String name = element.getText();
-            names.add(name);
-        }
+        List<String> names = headerElements.stream().map(WebElement::getText).collect(Collectors.toList());
         assertEquals(names, expectedNames);
 
         // 7 Assert that there are 4 images on the Index Page and they are displayed
@@ -89,43 +85,21 @@ public class CheckMainPageElements {
         List<WebElement> mainHeadersTexts = new ArrayList<WebElement>();
         mainHeadersTexts.add(mainTitle);
         mainHeadersTexts.add(jdiText);
-        List<String> headerTexts = new ArrayList<String>();
-        for (WebElement element : mainHeadersTexts) {
-            String text = element.getText();
-            headerTexts.add(text);
-        }
+        List<String> headerTexts = mainHeadersTexts.stream().map(WebElement::getText).collect(Collectors.toList());
         assertEquals(headerTexts, expectedHeaderTexts);
 
         // 10 Assert that there is the iframe in the center of page
-        driver.switchTo().frame("iframe");
-        driver.findElement(By.cssSelector(".search")).click();
-        driver.findElement(By.cssSelector(".search-field > input")).sendKeys("I am on the iframe");
-        // TODO What is the reason of scr here ?
-        // 1. You should avoid code duplication
-        // 2. It will be better to make a scr in case if test is failed
-        TakesScreenshot screenshot = (TakesScreenshot) driver;
-        File screensFile = screenshot.getScreenshotAs(OutputType.FILE);
-        try {
-            FileUtils.copyFile(screensFile, new File("C:/selenium/" + System.currentTimeMillis() + "onIFrame.png"));
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        WebElement iframe = driver.findElement(By.cssSelector("[id='iframe']"));
+        assertTrue(iframe.isDisplayed());
+
 
         // 11 Switch to the iframe and check that there is Epam logo in the left top conner of iframe
+        driver.switchTo().frame(iframe);
         WebElement iframeLogo = driver.findElement(By.cssSelector(".epam-logo"));
         assertTrue(iframeLogo.isDisplayed());
 
         // 12 Switch to original window back
         driver.switchTo().defaultContent();
-        driver.findElement(By.cssSelector(".search")).click();
-        driver.findElement(By.cssSelector(".search-field > input")).sendKeys("I am back on the default frame");
-        TakesScreenshot screenshot1 = (TakesScreenshot) driver;
-        File screensFile1 = screenshot1.getScreenshotAs(OutputType.FILE);
-        try {
-            FileUtils.copyFile(screensFile1, new File("C:/selenium/" + System.currentTimeMillis() + "onDefaultPage.png"));
-        } catch (IOException a) {
-            System.out.println(a.getMessage());
-        }
 
         // 13 Assert a text of the sub header
         WebElement subHeader = driver.findElement(By.linkText("JDI GITHUB"));

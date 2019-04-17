@@ -6,6 +6,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import enums.Configuration;
 import enums.PageTitles;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
@@ -15,6 +16,7 @@ import java.util.List;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byTitle;
 import static com.codeborne.selenide.Selenide.*;
+import static enums.Configuration.LOGIN;
 import static enums.Configuration.NAME;
 import static enums.LeftSectionServiceOptions.DATES;
 import static enums.RangeLogs.FROM;
@@ -79,16 +81,17 @@ public class SelenideCucumber {
     }
 
     @Step("Login")
-    @When("I login as user (.+) with password (.+)")
-    public void login(String login, String password) {
+    @When("I login as user (LOGIN) with password (PASSWORD)")
+//    @When("^i select (SUNDAY|MONDAY|TUESDAY|WEDNESDAY|THURSDAY|FRIDAY|SATURDAY) in the dropdown") public void iCheckTheCheckboxSelectOpeningHours(CheckoutAddAddressesPage.WeekDay day)
+    public void login(Configuration login, Configuration password) {
         userIcon.click();
-        loginInput.sendKeys(login);
-        passwordInput.sendKeys(password);
+//        loginInput.sendKeys(login);
+//        passwordInput.sendKeys(password);
         submitButton.click();
     }
 
     @Step ("Check user name")
-    @Then("The user name is displayed")
+    @Then("The PITER CHAILOVSKI user name is displayed")
     public void checkUserName() {
         userName.isDisplayed();
         userName.shouldHave(text(NAME.text));

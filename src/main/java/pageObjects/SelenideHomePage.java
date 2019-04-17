@@ -4,6 +4,7 @@ import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import enums.Configuration;
 import enums.LeftSectionServiceOptions;
 import enums.PageTitles;
 import io.qameta.allure.Step;
@@ -90,15 +91,15 @@ public class SelenideHomePage {
     }
 
     @Step("Assert Browser title")
-    public void assertTitle(String title) {
-        $(byTitle(title)).isDisplayed();
+    public void assertTitle(Configuration title) {
+        $(byTitle(title.toString())).isDisplayed();
     }
 
     @Step("Perform login")
-    public void login(String name, String pass) {
+    public void login(Configuration name, Configuration pass) {
         profileButton.click();
-        login.sendKeys(name);
-        password.sendKeys(pass);
+        login.sendKeys(name.toString());
+        password.sendKeys(pass.toString());
         loginButton.click();
     }
 
@@ -130,9 +131,9 @@ public class SelenideHomePage {
     }
 
     @Step
-    public void openPageFromHeaderMenu(String pageName) {
+    public void openPageFromHeaderMenu(PageTitles pageName) {
         dropdownName.shouldHave(text(SERVICE.title)).click();
-        dropdownOptions.findBy(text(pageName)).click();
-        $(byTitle(PageTitles.DIFFERENT_ELEMENTS.title)).isDisplayed();
+        dropdownOptions.findBy(text(pageName.toString())).click();
+        $(byTitle(pageName.toString())).isDisplayed();
     }
 }

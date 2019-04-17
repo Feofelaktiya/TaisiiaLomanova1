@@ -17,7 +17,6 @@ import static enums.RangeLogs.FROM;
 import static enums.RangeLogs.TO;
 import static enums.ServiceOptions.DATES;
 
-
 @Feature("Smoke tests")
 @Story("Different Elements Page Testing")
 @Listeners(AllureAttachmentListener.class)
@@ -25,7 +24,6 @@ public class DataPageSlidersCheck extends SelenideTestBase {
 
     private SelenideHomePage selenideHomePage;
     private SelenideDatesPage selenideDatesPage;
-
 
     @BeforeClass
     public void beforeClass() {
