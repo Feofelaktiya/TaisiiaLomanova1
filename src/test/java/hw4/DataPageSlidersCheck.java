@@ -1,6 +1,9 @@
 package hw4;
 
 import base.SelenideTestBase;
+import enums.PageTitles;
+import enums.ServiceOptions;
+import enums.Users;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import listeners.AllureAttachmentListener;
@@ -38,16 +41,16 @@ public class DataPageSlidersCheck extends SelenideTestBase {
         selenideHomePage.openBrowser();
 
 //        2 Assert Browser title
-        selenideHomePage.assertTitle(HOME_PAGE.title);
+        selenideHomePage.assertTitle(PageTitles.HOME_PAGE);
 //        3Perform login
 
-        selenideHomePage.login(LOGIN.text, PASSWORD.text);
+        selenideHomePage.login(Users.PITER_CHAILOVSKII);
 
 //        4 Assert User name in the left-top side of screen that user is loggined
-        selenideHomePage.assertUserName(NAME.text);
+        selenideHomePage.assertUserName(Users.PITER_CHAILOVSKII);
 
 //        5 Open through the header menu Service -> Dates Page
-        selenideHomePage.openPageFromHeaderMenu(DATES.option);
+        selenideHomePage.openPageFromHeaderMenu(ServiceOptions.DATES);
 
 //        6 Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most rigth position
         selenideDatesPage.moveLeftPoint(0);

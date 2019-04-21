@@ -4,10 +4,10 @@ Feature: Home Page and User Table Page on Cucumber
   # TODO Same story with parametrisation
   Scenario: Checking Home Page And User Table Page
     Given I am on the Home Page
-    # TODO Why don't you reuse steps from previous scenario ?
-    And I am logged in as Piter Chailovskii with login epam and 1234 password
-    And I open User Table Page through the header menu Service -> User Table
-    And I am on Users Table Page
+    Then The browser title is Home Page
+    When I login as user PITER_CHAILOVSKII
+    Then The PITER_CHAILOVSKII user name is displayed
+    And I open User Table Page through the header menu Service -> USER_TABLE
     And I check Number and User columns of Users table
     Then User table contain correct values for numbers and users
       | 1 | Roman            |

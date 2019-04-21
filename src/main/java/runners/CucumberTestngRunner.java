@@ -10,8 +10,9 @@ import org.testng.annotations.BeforeSuite;
 import static com.codeborne.selenide.Selenide.close;
 
 @CucumberOptions(
-//        features = "src/test/java/hw6/CheckHomePageAndDatesPageUsingSelenideCucumber.feature",
-        features = {"src/test/java/hw6/CheckHomePageAndDatesPageUsingSelenideCucumber.feature", "src/test/java/hw6/CheckHomePageAndUserTablePageUsingSelenideCucumber.feature"},
+//        features = {"src/test/java/hw6/CheckDifferentElementsPage.feature", "src/test/java/hw6/CheckHomePageAndUserTablePageUsingSelenideCucumber.feature"},
+        features = {"src/test/java/hw6/CheckHomePageAndUserTablePageUsingSelenideCucumber.feature"},
+//        features = {"src/test/java/hw6/CheckDifferentElementsPage.feature"},
         glue = {"pageObjects.cucumber"})
 public class CucumberTestngRunner extends AbstractTestNGCucumberTests {
 

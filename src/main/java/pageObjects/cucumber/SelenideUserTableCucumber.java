@@ -5,6 +5,9 @@ import com.codeborne.selenide.SelenideElement;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import enums.SectionTitles;
+import enums.cucumber.DifferentElementsCucumber;
+import enums.cucumber.UserTableCucumber;
 import io.cucumber.datatable.DataTable;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -18,6 +21,7 @@ import java.util.Map;
 
 import static com.codeborne.selenide.Condition.id;
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byTitle;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
 import static enums.Configuration.NAME;
@@ -85,29 +89,6 @@ public class SelenideUserTableCucumber {
     List<String> descList = new LinkedList<>();
     List<String> dropdownList = new LinkedList<>();
 
-    @Step("Login and check user name")
-    @And("I am logged in as Piter Chailovskii with login (.+) and (.+) password")
-    public void loginAsPiter(String login, String password) {
-        userIcon.click();
-        loginInput.sendKeys(login);
-        passwordInput.sendKeys(password);
-        submitButton.click();
-        userName.isDisplayed();
-        userName.shouldHave(text(NAME.text));
-    }
-
-    @Step("Open User Table page")
-    @And("I open User Table Page through the header menu Service -> User Table")
-    public void openUserTablePage() {
-        dropdownName.shouldHave(text(SERVICE.title)).click();
-        dropdownOptions.findBy(text(USER_TABLE.option)).click();
-    }
-
-    @And("I am on Users Table Page")
-    public void checkPageTitleIsUserTable() {
-//        $(byTitle(ServiceOptions.USER_TABLE.toLowerCase())).isDisplayed();
-    }
-
     @Step("Check number and user columns have valid values")
     @And("I check Number and User columns of Users table")
     public void getNamesAndNumbers() {
@@ -162,8 +143,8 @@ public class SelenideUserTableCucumber {
 
     @Step("Check logs for vip status")
     @Then("'Log' section shows a (\\d+) log row in format: (.+): condition changed to (.+)")
-    public void checkLogForVipStatus(int logNumber, String log, String condition) {
-        logs.get(logNumber - 1).shouldHave(text(log + ": condition changed to " + condition));
+    public void checkLogForVipStatus(int logRow, String log, String condition) {
+        logs.get(logRow - 1).shouldHave(text(log + ": condition changed to " + condition));
     }
 
     @Step("Check dropdown options have valid values")

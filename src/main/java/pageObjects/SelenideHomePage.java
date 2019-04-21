@@ -4,9 +4,7 @@ import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import enums.Configuration;
-import enums.LeftSectionServiceOptions;
-import enums.PageTitles;
+import enums.*;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 
@@ -91,22 +89,22 @@ public class SelenideHomePage {
     }
 
     @Step("Assert Browser title")
-    public void assertTitle(Configuration title) {
+    public void assertTitle(PageTitles title) {
         $(byTitle(title.toString())).isDisplayed();
     }
 
     @Step("Perform login")
-    public void login(Configuration name, Configuration pass) {
+    public void login(Users user ) {
         profileButton.click();
-        login.sendKeys(name.toString());
-        password.sendKeys(pass.toString());
+        login.sendKeys(user.name);
+        password.sendKeys(user.password);
         loginButton.click();
     }
 
     @Step
-    public void assertUserName(String name) {
+    public void assertUserName(Users user) {
         userName.shouldBe(Condition.visible);
-        userName.shouldBe(text(name));
+        userName.shouldBe(text(user.user));
     }
 
     @Step
@@ -131,9 +129,9 @@ public class SelenideHomePage {
     }
 
     @Step
-    public void openPageFromHeaderMenu(PageTitles pageName) {
-        dropdownName.shouldHave(text(SERVICE.title)).click();
-        dropdownOptions.findBy(text(pageName.toString())).click();
-        $(byTitle(pageName.toString())).isDisplayed();
+    public void openPageFromHeaderMenu(ServiceOptions serviceOption) {
+        dropdownName.shouldHave(text(SectionTitles.SERVICE.toString())).click();
+        dropdownOptions.findBy(text(serviceOption.option)).click();
+        $(byTitle(serviceOption.toString())).isDisplayed();
     }
 }
