@@ -1,7 +1,9 @@
 package hw4;
 
 import base.SelenideTestBase;
+import enums.PageTitles;
 import enums.ServiceOptions;
+import enums.Users;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import listeners.AllureAttachmentListener;
@@ -42,15 +44,15 @@ public class ServicePageInterfaceCheck extends SelenideTestBase {
         selenideHomePage.openBrowser();
 
 //        2 Assert Browser title
-        selenideHomePage.assertTitle(HOME_PAGE.title);
+        selenideHomePage.assertTitle(PageTitles.HOME_PAGE);
 
 //        3 Perform login
         // TODO This should be parameterized by User entity/enum rather than two strings.
-        selenideHomePage.login(LOGIN.text, PASSWORD.text);
+        selenideHomePage.login(Users.PITER_CHAILOVSKII);
 
 //        4 Assert User name in the left-top side of screen that user is loggined
         // TODO This is quite important to parametrised this method by exactly the same entity that SelenideHomePage::login
-        selenideHomePage.assertUserName(NAME.text);
+        selenideHomePage.assertUserName(Users.PITER_CHAILOVSKII);
 
 //        5 Click on "Service" subcategory in the header and check that drop down contains options
         selenideHomePage.checkHeaderDropdown();
@@ -59,7 +61,7 @@ public class ServicePageInterfaceCheck extends SelenideTestBase {
         selenideHomePage.checkLeftSectionOptions();
 
 //        7 Open through the header menu Service -> Different Elements Page
-        selenideHomePage.openPageFromHeaderMenu(ServiceOptions.DIFFERENT_ELEMENTS.option);
+        selenideHomePage.openPageFromHeaderMenu(ServiceOptions.DIFFERENT_ELEMENTS);
 
 //        8 Check interface on Different elements page, it contains all needed elements
         selenideDifferentElementsPage.checkPageContainsElements();
