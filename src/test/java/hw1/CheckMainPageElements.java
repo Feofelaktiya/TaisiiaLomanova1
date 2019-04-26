@@ -63,7 +63,6 @@ public class CheckMainPageElements {
             assertTrue(icon.isDisplayed());
         }
 
-        // TODO Take a look on this approach and refactor the rest of the test.
         // 8 Assert that there are 4 texts on the Index Page under icons and they have proper text
         List<WebElement> textElements = driver.findElements(By.cssSelector(".benefit-txt"));
         assertEquals(textElements.size(), 4);
@@ -73,7 +72,6 @@ public class CheckMainPageElements {
                 "To be flexible and\ncustomizable",
                 "To be multiplatform",
                 "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more" + "…"));
-        // !TODO
 
         // 9 Assert a text of the main headers
         List<String> expectedHeaderTexts = new ArrayList<String>();
