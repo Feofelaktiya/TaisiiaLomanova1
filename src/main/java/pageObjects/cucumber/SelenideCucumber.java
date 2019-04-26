@@ -114,6 +114,7 @@ public class SelenideCucumber {
 
     @Step("Login")
     @When("I login as user (.+)")
+    // TODO You can pass enum here in a straightforward way...
     public void login(String piter) {
         userIcon.click();
         Users userConf = Users.valueOf(piter);
@@ -128,6 +129,7 @@ public class SelenideCucumber {
         Users userConf = Users.valueOf(user);
         userName.shouldHave(Condition.exactText(userConf.user));
     }
+    // !TODO
 
     @Step("Check interface on Home page, it contains all needed elements:")
     @Then("Home Page contains benefits")

@@ -150,10 +150,11 @@ public class SelenideUserTableCucumber {
     @Step("Check dropdown options have valid values")
     @When("I click on dropdown in column Type for user (.+)")
     public void getDropdownValues(String user) {
+        // TODO What are you going to do in case if you have lots of users ?
+        // TODO This method should be parametrised by enum as well
         if (user.equals(ROMAN.user)) {
             $(By.xpath("//a[contains(text(), 'Roman')]/ancestor::tr//select")).click();
-            for (WebElement option : options
-                    ) {
+            for (WebElement option : options) {
                 dropdownList.add(option.getText());
             }
         }
